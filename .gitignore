@@ -1,0 +1,129 @@
+###############################################################################
+# 开源项目必读：
+# 1. 任何可能含隐私、密钥、Token、数据库文件、本地配置均勿入库。
+# 2. 如需提供模板，请保留 *.example 形式（如 .env.example）。
+# 3. 保持 ignore 文件语言无关排序，方便社区 PR。
+###############################################################################
+
+#############################
+# OS & Editor droppings
+#############################
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp
+*.swo
+*.bak
+.idea/
+.vscode/
+*.iml
+
+#############################
+# Python – FastAPI + uv
+#############################
+# Bytecode & opt
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# uv 虚拟环境（uv 默认 .venv；兼容 venv 目录）
+.venv/
+venv/
+env/
+ENV/
+
+# uv 锁文件说明：
+# 开源项目推荐「锁定依赖」保证可复现构建，
+# 因此 uv.lock 默认进库；如你只想维护 requirements，
+# 可注释掉下一行。
+# uv.lock
+
+# 构建产物
+build/
+develop-eggs/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# 测试 & 覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.ruff_cache/
+.mypy_cache/
+
+# Alembic 运行时产生
+alembic.ini.bak
+alembic/versions/*.pyc
+
+# 本地环境变量（只提供模板）
+.env
+.env.*
+!.env.example
+
+#############################
+# Node – Vue + Vite
+#############################
+node_modules/
+.pnp.*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 构建目录
+dist/
+dist-ssr/
+*.local
+
+# 缓存
+.vite/
+.eslintcache
+.prettiercache
+.npm
+.yarn/cache
+.yarn/install-state.gz
+
+# 日志
+npm-debug.log*
+yarn-debug.log*
+
+#############################
+# Docker / K8s / CI
+#############################
+.dockerignore
+docker-compose.override.yml
+*.pid
+*.seed
+
+#############################
+# 数据库 & 上传文件
+#############################
+*.db
+*.sqlite
+*.sqlite3
+postgres-data/
+mysql-data/
+uploads/
+media/
+
+#############################
+# 密钥 & 证书
+#############################
+*.pem
+*.key
+*.crt
+secrets/
+.secret
+
+#############################
+# 临时文件
+#############################
+*.tmp
+*.temp
+*.log
+logs/
+!src/logs/.gitkeep          # 如需保留空目录
