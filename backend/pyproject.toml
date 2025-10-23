@@ -4,4 +4,17 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "alembic>=1.17.0",
+    "argon2-cffi>=25.1.0",
+    "fastapi>=0.119.1",
+    "loguru>=0.7.3",
+    "passlib>=1.7.4",
+    "pydantic-settings>=2.11.0",
+    "pyjwt>=2.10.1",
+    "pymysql>=1.1.2",
+    "python-dotenv>=1.1.1",
+    "sqlalchemy>=2.0.44",
+    "sqlmodel>=0.0.27",
+    "uvicorn>=0.38.0",
+]
