@@ -137,7 +137,7 @@ def login(req: UserLoginRequest, db: Session = Depends(get_session)):
 
     # 5. 生成访问令牌
     logger.debug("正在生成访问令牌")
-    access_token_expires = timedelta(hours=settings.access_token_expire_hours)  # 使用正确的过期时间设置
+    access_token_expires = timedelta(hours=settings.access_token_expire_minutes)  # 使用正确的过期时间设置
     access_token = create_access_token(
         data={"sub": user.username, "user_id": user.id},
         expires_delta=access_token_expires
@@ -238,3 +238,30 @@ def change_password(
         content=response_data,
         status_code=status.HTTP_200_OK
     )
+
+
+@router.get("/check-mobile", status_code=status.HTTP_200_OK)
+def check_mobile_phone_unique(mobile_phone: str, db: Session = Depends(get_session)):
+    """检查手机号是否唯一"""
+    logger.debug(f"检查手机号唯一性: {mobile_phone}")
+
+    try:
+        # 检查手机号是否存在
+        exists = auth_crud.check_mobile_phone_exists(db, mobile_phone)
+
+        logger.success(f"手机号唯一性检查结果: {mobile_phone} -> {exists}")
+
+        return JSONResponse(
+            content={
+                'code': status.HTTP_200_OK,
+                'data': {'exists': exists},
+                'msg': "查询成功"
+            },
+            status_code=status.HTTP_200_OK
+        )
+    except Exception as e:
+        logger.error(f"手机号唯一性检查失败: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="手机号唯一性检查失败"
+        )

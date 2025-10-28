@@ -58,7 +58,8 @@ htmlcov/
 
 # Alembic 运行时产生
 alembic.ini.bak
-alembic/versions/*.pyc
+alembic/
+alembic.ini
 
 # 本地环境变量（只提供模板）
 .env
@@ -127,3 +128,5 @@ secrets/
 *.log
 logs/
 !src/logs/.gitkeep          # 如需保留空目录
+knowledge_documents/
+vector_files/

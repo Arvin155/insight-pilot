@@ -27,6 +27,26 @@ class Settings(BaseSettings):
 
     # 文件存储配置
     log_file_path: str = os.getenv("LOG_FILE_PATH")
+    knowledge_file_path: str = os.getenv("KNOWLEDGE_FILE_PATH")
+
+    # llama_index 元数据配置
+    metadata_exclude_fields: str = os.getenv("METADATA_EXCLUDE_FIELDS")
+
+    # LLM 配置
+    dashscope_api_key: str = os.getenv("DASHSCOPE_API_KEY")
+    llm_base_url: str = os.getenv("LLM_BASE_URL")
+    chat_model: str = os.getenv("CHAT_MODEL", "qwen-plus")
+    embedding_model: str = os.getenv("EMBEDDING_MODEL", "text-embedding-v2")
+    rerank_model: str = os.getenv("RERANK_MODEL", "get-rerank-v2")
+
+    # 向量数据库配置
+    vector_file_path: str = os.getenv("VECTOR_FILE_PATH")
+    # chroma
+    chroma_file_path: str = os.getenv("CHROMA_FILE_PATH")
+    # milvus
+    milvus_client: str = os.getenv("MILVUS_CLIENT")
+    milvus_user: str = os.getenv("MILVUS_USER")
+    milvus_password: str = os.getenv("MILVUS_PASSWORD")
 
     @property
     def database_url(self) -> str:

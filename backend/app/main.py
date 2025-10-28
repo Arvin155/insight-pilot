@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import auth
+from app.api import auth, knowledge, docs
 from app.middleware.exception_middleware import ExceptionMiddleware
 from app.middleware.logger_middleware import LoggingMiddleware
 
@@ -24,3 +24,5 @@ app.add_middleware(ExceptionMiddleware)
 
 # 挂载路由
 app.include_router(auth.router)
+app.include_router(knowledge.router)
+app.include_router(docs.router)
